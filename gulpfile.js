@@ -1,53 +1,44 @@
 const { src, dest, watch, series, parallel } = require('gulp');
-
 const scss = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-
 const browserSync = require('browser-sync').create();
-
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
-
 const clean = require('gulp-clean');
-
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const avif = require('gulp-avif');
-
 const svgstore = require('gulp-svgstore');
-
 const newer = require('gulp-newer');
+const fonter = require('gulp-fonter');
 const ttf2woff2 = require('gulp-ttf2woff2');
-
 const include = require('gulp-include');
 
+// Styles
 function styles() {
   return src('app/scss/style.scss')
+    .pipe(scss({ outputStyle: 'compressed' }).on('error', scss.logError))
     .pipe(autoprefixer({
-      overrideBrowserlist: ['last 10 version']
+      overrideBrowserslist: ['last 10 versions'],
+      cascade: false
     }))
     .pipe(concat('style.min.css'))
-    .pipe(scss({
-      style: 'compressed'
-    }))
     .pipe(dest('app/css'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 }
 
+// Fonts
 function fonts() {
-  return src('app/fonts/*.ttf')
+  src('app/fonts/**/*.ttf')
+    .pipe(fonter({ formats: ['woff'] }))
+    .pipe(dest('app/fonts'));
+
+  return src('app/fonts/**/*.ttf')
   .pipe(ttf2woff2())
   .pipe(dest('app/fonts'))
 }
 
-function scripts() {
-  return src('app/js/main.js')
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
-    .pipe(dest('app/js'))
-    .pipe(browserSync.stream())
-}
-
+// Images
 function images() {
   return src(['app/images/src/*.*', '!app/images/src/*.svg'])
     .pipe(newer('app/images'))
@@ -66,12 +57,23 @@ function images() {
     .pipe(dest('app/images'))
 }
 
+// Sprites
 function sprites() {
   src('app/images/sprite/*.svg')
   .pipe(svgstore())
   .pipe(dest('app/images'))
 }
 
+// Scripts
+function scripts() {
+  return src('app/js/main.js')
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(dest('app/js'))
+    .pipe(browserSync.stream())
+}
+
+// Pages
 function pages() {
   return src('app/pages/*.html')
   .pipe(include({
@@ -81,47 +83,52 @@ function pages() {
   .pipe(browserSync.stream())
 }
 
+// Watching
 function watching() {
   browserSync.init({
     server: {
       baseDir: 'app/'
     }
   });
-  watch(['app/scss/style.scss'], styles)
-  watch(['app/js/main.js'], scripts)
+  watch(['app/scss/*.scss'], styles)
   watch(['app/images/src'], images)
   watch(['app/images/sprites'], sprites)
+  watch(['app/js/main.js'], scripts)
   watch(['app/pages/*', 'app/components/*'], pages)
   watch(['app/*.html']).on('change', browserSync.reload)
 }
 
+// Clean Dist
 function cleanDist() {
   return src('dist')
     .pipe(clean())
 }
 
+// Build
 function building() {
   return src([
       'app/*html',
       'app/css/style.min.css',
-      'app/fonts/*.woff2',
-      'app/js/main.min.js',
-      'app/images/*.*'
+      'app/fonts/**/*.woff',
+      'app/fonts/**/*.woff2',
+      'app/images/*.*',
+      'app/icons/*.*',
+      'app/js/main.min.js'
     ], {
       base: 'app'
     })
     .pipe(dest('dist'))
 }
 
+// Exports
 exports.styles = styles;
 exports.fonts =  fonts;
-exports.scripts = scripts;
-exports.watching = watching;
 exports.images = images;
 exports.sprites = sprites;
+exports.scripts = scripts;
+exports.watching = watching;
 exports.pages = pages;
 exports.cleanDist = cleanDist;
 exports.building = building;
-
 exports.build = series(cleanDist, building);
 exports.default = parallel(styles, scripts, images, sprites, pages, watching);

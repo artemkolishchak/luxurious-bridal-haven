@@ -1,0 +1,131 @@
+@use 'reset';
+@use 'fonts';
+@use 'vars'as *;
+@use 'mixins'as *;
+@use 'helpers';
+@use 'global';
+
+.logo {
+  &__link {
+    display: inline-block;
+
+    @include focus-visible();
+  }
+
+  &__image {
+    max-width: 242px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.header {
+  padding-top: 36px;
+  padding-bottom: 40px;
+
+  &__inner {
+    margin-inline: auto;
+    padding-inline: $container-padding-lg;
+    width: 100%;
+    max-width: calc($container-max-width-lg + ($container-padding-lg * 2));
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $accent-color;
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__switcher-langs,
+  &__menu-list,
+  &__actions {
+    align-items: center;
+  }
+
+  &__switcher-lang {
+    &:not(:first-child) {
+      position: relative;
+      padding-left: 4px;
+
+      &::before {
+        content: '/';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: inline-block;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__switcher-lang-link {
+    position: relative;
+    transition: text-shadow 0.3s ease;
+
+    &--active {
+      @include active-text-shadow();
+    }
+
+    &:not(&--active) {
+      @include underline-hover($accent-color);
+    }
+
+    &:active {
+      color: rgba($accent-color, 0.55);
+    }
+
+    @include focus-visible();
+  }
+
+  &__menu-list {
+    column-gap: 30px;
+  }
+
+  &__menu-item-link {
+    position: relative;
+    display: block;
+    transition: color 0.1s ease, text-shadow 0.3s ease, transform 0.3s ease;
+
+    &--active {
+      @include active-text-shadow();
+    }
+
+    &:not(&--active) {
+      @include underline-hover($accent-color);
+    }
+
+    &:active {
+      color: rgba($accent-color, 0.55);
+    }
+
+    @include focus-visible();
+
+  }
+
+  &__actions {
+    column-gap: 20px;
+  }
+
+  &__actions-item-link {
+    display: block;
+    line-height: 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    @include focus-visible();
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+}

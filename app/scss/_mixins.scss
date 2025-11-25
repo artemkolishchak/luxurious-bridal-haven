@@ -1,0 +1,34 @@
+@use 'vars'as *;
+
+@mixin active-text-shadow($size: 0.7px, $color: currentColor) {
+  text-shadow: 0 0 $size $color, 0 0 $size $color;
+}
+
+@mixin underline-hover($color: currentColor, $height: 1px, $transition: 0.3s) {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: $height;
+    background-color: $color;
+    transform: translateX(-50%);
+    transition: width $transition ease;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+@mixin focus-visible($color: $accent-color, $outline: 1px, $offset: 2px, $radius: 4px) {
+  &:focus-visible {
+    outline: $outline solid $color;
+    outline-offset: $offset;
+    border-radius: $radius;
+  }
+}
