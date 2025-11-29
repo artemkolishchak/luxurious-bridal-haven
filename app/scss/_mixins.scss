@@ -1,5 +1,6 @@
 @use 'vars'as *;
 
+// как писаь миксины
 @mixin active-text-shadow($size: 0.7px, $color: currentColor) {
   text-shadow: 0 0 $size $color, 0 0 $size $color;
 }

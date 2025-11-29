@@ -24,10 +24,6 @@
   padding-bottom: 40px;
 
   &__inner {
-    margin-inline: auto;
-    padding-inline: $container-padding-lg;
-    width: 100%;
-    max-width: calc($container-max-width-lg + ($container-padding-lg * 2));
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
@@ -83,7 +79,7 @@
     @include focus-visible();
   }
 
-  &__menu-list {
+  &__menu {
     column-gap: 30px;
   }
 
@@ -128,4 +124,106 @@
     }
   }
 
+}
+
+.footer {
+  font-size: 16px;
+  color: $text-color;
+
+  &__nav {
+    padding-top: 55px;
+    padding-bottom: 44px;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid $secondary-color;
+  }
+
+  &__menu {}
+
+  &__menu-item {}
+
+  &__menu-item-link {}
+
+  &__logo {}
+
+  &__items {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    justify-content: space-between;
+  }
+
+  &__item {}
+
+  &__item-heading {
+    margin-bottom: 20px;
+    color: rgba($text-color, 0.5);
+  }
+
+  &__phones-list {}
+
+  &__phone-item {}
+
+  &__phone-link {}
+
+  &__emails-list {}
+
+  &__email-item {}
+
+  &__email-link {}
+
+  &__address {}
+
+  &__address-link {}
+
+  &__socials-list {}
+
+  &__social-item {}
+
+  &__social-link {}
+
+  &__form {}
+
+  &__form-input {}
+
+  &__form-btn {}
+
+  &__bottom {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 11px;
+    color: $accent-color;
+    background-color: $secondary-color;
+  }
+
+  &__bottom-inner {
+    padding-inline: 24px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__bottom-menu {
+    column-gap: 20px;
+  }
+
+  &__bottom-menu-item {
+    position: relative;
+
+    &+& {
+      padding-left: 20px;
+    }
+
+    &+&:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 1px;
+      height: 100%;
+      background-color: $accent-color;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__bottom-menu-link {}
 }
