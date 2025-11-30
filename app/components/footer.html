@@ -3,7 +3,7 @@
     <nav class="footer__nav d-flex">
       <ul class="footer__menu d-flex">
         <li class="footer__menu-item">
-          <a class="footer__menu-item-link" href="#">Catalog</a>
+          <a class="footer__menu-item-link footer__menu-item-link--active" href="#">Catalog</a>
         </li>
         <li class="footer__menu-item">
           <a class="footer__menu-item-link" href="#">Collections</a>
@@ -55,7 +55,8 @@
       <div class="footer__item">
         <p class="footer__item-heading">Location</p>
         <address class="footer__address">
-          <a class="footer__address-link" href="https://share.google/FefxpM9CjIvBczuKT">Ukraine, Kyiv,<br> st.
+          <a class="footer__address-link" href="https://share.google/FefxpM9CjIvBczuKT"
+            rel="noopener noreferrer nofollow">Ukraine, Kyiv,<br> st.
             Arsenalna, 5</a>
         </address>
       </div>
@@ -63,14 +64,14 @@
         <p class="footer__item-heading">Social</p>
         <ul class="footer__socials-list d-flex">
           <li class="footer__social-item">
-            <a class="footer__social-link" href="#" aria-label="Facebook">
+            <a class="footer__social-link" href="#" aria-label="Facebook" rel="noopener noreferrer nofollow">
               <svg width="25" height="25" role="img">
                 <use href="images/sprite.svg#facebook-icon"></use>
               </svg>
             </a>
           </li>
           <li class="footer__social-item">
-            <a class="footer__social-link" href="#" aria-label="Instagram">
+            <a class="footer__social-link" href="#" aria-label="Instagram" rel="noopener noreferrer nofollow">
               <svg width="25" height="25" role="img">
                 <use href="images/sprite.svg#instagram-icon"></use>
               </svg>
@@ -79,8 +80,9 @@
         </ul>
       </div>
       <div class="footer__item">
+        <p class="footer__item-heading">Sign-up for our newsletter</p>
         <form action="" class="footer__form">
-          <label class="footer__item-heading" for="user_email">Sign-up for our newsletter</label>
+          <label class="sr-only" for="user_email">Sign-up for our newsletter</label>
           <input class="footer__form-input" type="email" name="user_email" id="user_email" autocomplete="email"
             inputmode="email" placeholder="Enter your email" aria-label="Enter your email" required>
           <button class="footer__form-btn" type="submit" aria-label="Submit">

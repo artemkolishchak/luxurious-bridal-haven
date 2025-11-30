@@ -1,8 +1,8 @@
 @use 'vars'as *;
 
-// как писаь миксины
 @mixin active-text-shadow($size: 0.7px, $color: currentColor) {
   text-shadow: 0 0 $size $color, 0 0 $size $color;
+  transition: text-shadow 0.3s ease;
 }
 
 @mixin underline-hover($color: currentColor, $height: 1px, $transition: 0.3s) {

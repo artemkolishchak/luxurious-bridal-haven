@@ -86,7 +86,7 @@
   &__menu-item-link {
     position: relative;
     display: block;
-    transition: color 0.1s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    transition: color 0.1s ease, text-shadow 0.3s ease;
 
     &--active {
       @include active-text-shadow();
@@ -131,61 +131,204 @@
   color: $text-color;
 
   &__nav {
-    padding-top: 55px;
-    padding-bottom: 44px;
-    justify-content: space-around;
+    padding: 55px 55px 50px;
     align-items: center;
+    column-gap: 64px;
     border-bottom: 1px solid $secondary-color;
   }
 
-  &__menu {}
+  &__menu {
+    width: 100%;
+    max-width: calc((100% - 242px) / 2);
+    justify-content: center;
+    column-gap: 90px;
 
-  &__menu-item {}
+    &:first-of-type {
+      justify-content: flex-end;
+    }
 
-  &__menu-item-link {}
-
-  &__logo {}
-
-  &__items {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    justify-content: space-between;
   }
 
-  &__item {}
+  &__menu-item-link {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background-color: rgba($text-color, 0.35);
+    }
+
+    &--active {
+      @include active-text-shadow();
+
+      &::after {
+        background-color: $text-color;
+      }
+    }
+
+    &:not(&--active) {
+      @include underline-hover($text-color);
+    }
+
+    &:active {
+      color: rgba($text-color, 0.55);
+    }
+
+    &:focus-visible::after {
+      content: none;
+    }
+
+    @include focus-visible($text-color);
+
+  }
+
+  &__logo {
+    max-width: 242px;
+    width: 100%;
+  }
+
+  .logo__link {
+    display: block;
+  }
+
+  &__items {
+    padding-top: 56px;
+    padding-bottom: 50px;
+    justify-content: space-between;
+    column-gap: 24px;
+  }
+
+  &__item {
+    &:has(.footer__form) {
+      max-width: 250px;
+      flex: 1;
+    }
+  }
 
   &__item-heading {
     margin-bottom: 20px;
     color: rgba($text-color, 0.5);
   }
 
-  &__phones-list {}
+  &__phone-item,
+  &__email-item {
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
 
-  &__phone-item {}
+  &__phone-link,
+  &__email-link,
+  &__address-link {
+    font-style: normal;
 
-  &__phone-link {}
+    &:hover {
+      @include active-text-shadow();
+    }
 
-  &__emails-list {}
+    &:active {
+      color: rgba($text-color, 0.55);
+    }
 
-  &__email-item {}
+    @include focus-visible($text-color);
+  }
 
-  &__email-link {}
+  &__socials-list {
+    column-gap: 10px;
+  }
 
-  &__address {}
+  &__social-link {
+    display: block;
+    line-height: 0;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
 
-  &__address-link {}
+    &:hover {
+      transform: scale(1.15);
+    }
 
-  &__socials-list {}
+    &:active {
+      transform: scale(0.95);
+    }
 
-  &__social-item {}
+    @include focus-visible($color: $text-color, $radius: 50%);
 
-  &__social-link {}
+  }
 
-  &__form {}
+  &__form {
+    position: relative;
+    max-width: 250px;
+    width: 100%;
+  }
 
-  &__form-input {}
+  &__form-input {
+    margin-top: -8px;
+    padding-top: 8px;
+    padding-right: 32px;
+    padding-bottom: 8px;
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid $secondary-color;
+    color: $text-color;
+    background-color: transparent;
+    transition: border-color 0.3s ease;
 
-  &__form-btn {}
+    &::placeholder {
+      color: rgba($text-color, 0.5);
+    }
+
+    &:hover {
+      border-color: $text-color;
+    }
+
+    &:focus {
+      @include focus-visible($color:$text-color);
+    }
+
+    @include focus-visible($color:$text-color);
+
+    &:focus-visible {
+      border-bottom: none;
+    }
+
+    &:valid {
+      border-bottom-color: $input-success;
+    }
+
+    &:invalid:not(:placeholder-shown) {
+      border-color: $input-error;
+      background-color: $input-bg-error;
+    }
+
+  }
+
+  &__form-input:hover+&__form-btn {
+    transform: scale(1.15);
+  }
+
+  &__form-btn {
+    position: absolute;
+    top: 13px;
+    right: 0;
+    display: block;
+    line-height: 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include focus-visible($color: $text-color, $offset: 4px);
+  }
 
   &__bottom {
     padding-top: 8px;
@@ -225,5 +368,17 @@
     }
   }
 
-  &__bottom-menu-link {}
+  &__bottom-menu-link {
+    transition: color 0.3s ease;
+
+    &:hover {
+      @include active-text-shadow($size: 0.5px);
+    }
+
+    &:active {
+      color: rgba($accent-color, 0.55);
+    }
+
+    @include focus-visible();
+  }
 }
