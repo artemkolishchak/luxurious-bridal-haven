@@ -4,7 +4,32 @@
 @use 'mixins'as *;
 @use 'helpers';
 @use 'global';
+@use 'components';
 
+// Promo
+.promo {
+  padding-block: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $primary-color;
+  background-color: $secondary-color;
+
+  &__link {
+
+    &:hover {
+      @include active-text-shadow($size: 0.5px);
+    }
+
+    &:active {
+      color: rgba($primary-color, 0.55);
+    }
+
+    @include focus-visible($color: $primary-color);
+  }
+}
+
+// Logo
 .logo {
   &__link {
     display: inline-block;
@@ -19,6 +44,7 @@
   }
 }
 
+// Header
 .header {
   padding-top: 36px;
   padding-bottom: 40px;
@@ -126,6 +152,123 @@
 
 }
 
+// Hero
+.hero {
+  padding-top: 115px;
+  padding-bottom: 4px;
+  min-height: 880px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__inner {
+    justify-content: flex-end;
+  }
+
+  &__content {
+    margin-left: auto;
+    padding-left: 20px;
+    max-width: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__heading {
+    margin-bottom: 60px;
+    @extend %lora-400;
+    font-size: 80px;
+    line-height: 1.2;
+    color: $accent-color;
+  }
+}
+
+// New Collection
+.new-collection {
+  position: relative;
+  padding-bottom: 150px;
+
+  &__inner {
+    position: relative;
+    padding-top: 226px;
+    justify-content: space-between;
+    column-gap: 24px;
+
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: -21%;
+      left: -14%;
+      width: 515px;
+      height: 100%;
+      background-image: url(../images/new-collection-image-decor.svg);
+      background-repeat: no-repeat;
+      background-position: top left;
+      background-size: contain;
+    }
+  }
+
+  &__content {
+    max-width: 416px;
+    width: 100%;
+  }
+
+  &__heading {
+    margin-bottom: 50px;
+    @extend %lora-400;
+    font-size: 45px;
+    text-transform: uppercase;
+    color: $accent-color
+  }
+
+  &__description {
+    margin-bottom: 90px;
+    max-width: 400px;
+    width: 100%;
+
+    p:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__images {
+    position: relative;
+    max-width: calc(100% - 416px - 24px);
+    width: 100%;
+  }
+
+  &__images-image,
+  &__images-box-image {
+    border: 8px solid $secondary-color;
+
+    img {
+      max-width: fit-content;
+    }
+  }
+
+  &__images-box {
+    position: absolute;
+    top: -75px;
+    right: 0;
+    flex-direction: column;
+  }
+
+  &__images-box-image {
+    margin-bottom: 40px;
+  }
+
+  &__images-box-description {
+    max-width: 290px;
+    width: 100%;
+    align-self: flex-end;
+
+    p:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+// Footer
 .footer {
   font-size: 16px;
   color: $text-color;
@@ -279,7 +422,7 @@
     transition: border-color 0.3s ease;
 
     &::placeholder {
-      color: rgba($text-color, 0.5);
+      color: $text-color;
     }
 
     &:hover {

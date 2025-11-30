@@ -1,0 +1,76 @@
+@use 'reset';
+@use 'fonts';
+@use 'vars'as *;
+@use 'mixins'as *;
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--primary {
+    padding: 10px 24px;
+    min-width: 271px;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: $text-color;
+
+    &:hover,
+    &:active {
+      color: $white;
+      background-color: $text-color;
+    }
+
+    @include focus-visible($color: $text-color, $radius: 0);
+  }
+
+  &--accent {
+    position: relative;
+    padding: 12px 36px;
+    min-width: 275px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $accent-color;
+    border-color: $accent-color;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      height: 100%;
+      background: linear-gradient(120deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.5) 50%,
+          transparent 100%);
+      transform: skewX(-20deg);
+    }
+
+    &:hover::before {
+      animation: shimmer 1.2s forwards;
+    }
+
+    @include focus-visible($color: $accent-color);
+  }
+
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}

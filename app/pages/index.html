@@ -1,5 +1,54 @@
+<!--=include promo.html -->
 <!--=include header.html -->
 
-<main class="main"></main>
+<main class="main">
+  <section class="hero" style=" background-image:
+    image-set(url(/images/hero-image.avif) type('image/avif'), url(/images/hero-image.webp) type('image/webp'),
+    url(/images/hero-image.jpg) type('image/jpeg'));">
+    <div class="container-lg">
+      <div class="hero__inner">
+        <div class="hero__content d-flex">
+          <h1 class="hero__heading">Spring 2024 collection</h1>
+          <a class="btn btn--accent" href="#">Shop New Arrivals</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="new-collection">
+    <div class="container">
+      <div class="new-collection__inner d-flex">
+        <div class="new-collection__content">
+          <h2 class="new-collection__heading">New Collection</h2>
+          <div class="new-collection__description">
+            <p>Discover our new collection of wedding dresses that impresses with its beauty and elegance.</p>
+            <p>Each dress in this collection is crafted with love for detail and expertly executed to the highest
+              standards of quality.</p>
+            <p>Regardless of your style and preferences, in our collection, you will find the dress of your dreams –
+              from classic silhouettes to modern and original designs.</p>
+          </div>
+          <a class="btn btn--primary" href="#">View the collection</a>
+        </div>
+        <div class="new-collection__images d-flex">
+          <picture class="new-collection__images-image">
+            <source srcset="/images/new-collection-img-01.avif" type="image/avif">
+            <source srcset="/images/new-collection-img-01.webp" type="image/webp">
+            <img src="/images/new-collection-img-01.jpg" alt="New Collection Image">
+          </picture>
+          <div class="new-collection__images-box d-flex">
+            <picture class="new-collection__images-box-image">
+              <source srcset="/images/new-collection-img-02.avif" type="image/avif">
+              <source srcset="/images/new-collection-img-02.webp" type="image/webp">
+              <img src="/images/new-collection-img-02.jpg" alt="New Collection Image">
+            </picture>
+            <div class="new-collection__images-box-description">
+              <p>Allow yourself to be enchanted by our wedding dresses and create a unique look for your most important
+                day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <!--=include footer.html -->
