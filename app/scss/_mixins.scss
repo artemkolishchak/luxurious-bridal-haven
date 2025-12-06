@@ -33,3 +33,15 @@
     border-radius: $radius;
   }
 }
+
+@mixin bg-image ($image: "", $repeat: no-repeat, $position: center, $size: cover) {
+  background-image: url(#{$image});
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin object-image($fit: cover, $position: center) {
+  object-fit: $fit;
+  object-position: $position;
+}

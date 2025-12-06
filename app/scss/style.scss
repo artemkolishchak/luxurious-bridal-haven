@@ -50,9 +50,6 @@
   padding-bottom: 40px;
 
   &__inner {
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
     font-size: 16px;
     text-transform: uppercase;
     color: $accent-color;
@@ -62,12 +59,6 @@
     margin-bottom: 20px;
     width: 100%;
     text-align: center;
-  }
-
-  &__switcher-langs,
-  &__menu-list,
-  &__actions {
-    align-items: center;
   }
 
   &__switcher-lang {
@@ -152,25 +143,17 @@
 
 }
 
-// Hero
+// Hero Section
 .hero {
   padding-top: 115px;
   padding-bottom: 4px;
   min-height: 880px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  &__inner {
-    justify-content: flex-end;
-  }
+  @include bg-image;
 
   &__content {
     margin-left: auto;
     padding-left: 20px;
     max-width: 50%;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   &__heading {
@@ -182,7 +165,7 @@
   }
 }
 
-// New Collection
+// New Collection Section
 .new-collection {
   position: relative;
   padding-bottom: 150px;
@@ -190,7 +173,6 @@
   &__inner {
     position: relative;
     padding-top: 226px;
-    justify-content: space-between;
     column-gap: 24px;
 
     &:before {
@@ -201,10 +183,8 @@
       left: -14%;
       width: 515px;
       height: 100%;
-      background-image: url(../images/new-collection-image-decor.svg);
-      background-repeat: no-repeat;
-      background-position: top left;
-      background-size: contain;
+      @include bg-image('../images/new-collection-image-decor.svg', no-repeat, top left, contain);
+      filter: opacity(40%);
     }
   }
 
@@ -215,20 +195,10 @@
 
   &__heading {
     margin-bottom: 50px;
-    @extend %lora-400;
-    font-size: 45px;
-    text-transform: uppercase;
-    color: $accent-color
   }
 
   &__description {
     margin-bottom: 90px;
-    max-width: 400px;
-    width: 100%;
-
-    p:not(:last-child) {
-      margin-bottom: 30px;
-    }
   }
 
   &__images {
@@ -240,17 +210,16 @@
   &__images-image {
     img {
       max-width: 331px;
-      width: 100%;
       aspect-ratio: 388 / 548;
     }
   }
 
   &__images-image,
   &__images-box-image {
-    border: 8px solid $secondary-color;
 
     img {
       height: 100%;
+      @include object-image;
     }
   }
 
@@ -258,7 +227,6 @@
     position: absolute;
     top: -75px;
     right: 0;
-    flex-direction: column;
   }
 
   &__images-box-image {
@@ -266,8 +234,8 @@
 
     img {
       max-width: 388px;
-      width: 100%;
       aspect-ratio: 388 / 434;
+
     }
   }
 
@@ -282,6 +250,207 @@
   }
 }
 
+// Join Us Section
+.join-us {
+  background-color: $secondary-color;
+
+  &__inner {
+    column-gap: 40px;
+  }
+
+  &__image {
+    width: calc(50% - 20px);
+    height: auto;
+    aspect-ratio: 540 / 489;
+    @include bg-image;
+    @include object-image;
+  }
+
+  &__box {
+    padding-block: 40px;
+    width: calc(50% - 20px);
+    color: $primary-color;
+  }
+
+  &__box-heading {
+    margin-bottom: 20px;
+  }
+
+  &__box-description {
+    margin-bottom: 30px;
+    @extend %lora-400;
+    font-size: 30px;
+  }
+
+  &__box-form {
+    margin-bottom: 0;
+    max-width: 540px;
+    width: 100%;
+
+    input {
+      padding: 0;
+      padding-top: 8px;
+      padding-right: 16px;
+      padding-bottom: 8px;
+      width: 100%;
+      display: block;
+      border: none;
+      font-size: 20px;
+      background-color: transparent;
+      border-bottom: 1px solid $text-color;
+      transition: border-color 0.3s ease;
+
+      &+input {
+        margin-top: 8px;
+      }
+
+
+      &::placeholder {
+        color: $text-color;
+      }
+
+      &:hover {
+        border-color: $accent-color;
+      }
+
+      &:focus {
+        @include focus-visible($color:$accent-color);
+      }
+
+      @include focus-visible($color:$accent-color);
+
+      &:valid {
+        border-bottom-color: $input-success;
+      }
+
+      &:invalid:not(:placeholder-shown) {
+        border-color: $input-error;
+        background-color: $input-bg-error;
+      }
+    }
+  }
+
+  &__box-btn {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  &__box-consent {
+    font-size: 11px;
+  }
+}
+
+// The Designer Section
+.the-designer {
+  padding-top: 150px;
+  padding-bottom: 230px;
+
+  &__heading {
+    margin-bottom: 50px;
+  }
+
+  &__description {
+    font-size: 16px;
+  }
+
+  &__bio {
+    position: relative;
+  }
+
+  &__bio-image {
+    margin-bottom: 40px;
+
+    img {
+      max-width: 524px;
+      width: 100%;
+      aspect-ratio: 540 / 554;
+      @include object-image;
+    }
+  }
+
+  &__bio-description {
+    position: absolute;
+    top: 176px;
+    left: -163px;
+    padding: 20px 18px;
+    max-width: 300px;
+    width: 100%;
+    @extend %lora-400;
+    font-size: 20px;
+    color: $primary-color;
+    background-color: $white;
+    border: 3px solid $secondary-color;
+  }
+}
+
+.our-advantages {
+  background-color: $secondary-color;
+
+  &__inner {
+    position: relative;
+    padding-block: 64px;
+
+    &::before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      bottom: 10px;
+      right: -3%;
+      display: block;
+      width: 326px;
+      height: 548px;
+      @include bg-image('../images/our-advantages-decor-image.svg');
+      filter: opacity(40%);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 378px;
+    height: auto;
+    aspect-ratio: 378 / 460;
+    @include bg-image;
+    @include object-image;
+  }
+
+  &__content {
+    width: calc(100% - 378px - 70px);
+    margin-left: auto;
+  }
+
+  &__items {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: column;
+    gap: 30px 80px;
+    color: $primary-color;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 50px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 30px;
+      height: 22px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='22' fill='none' viewBox='0 0 30 22'%3E%3Cpath fill='%23513c27' d='M29.76 11.337a1.73 1.73 0 0 0-1.055-.819 9.2 9.2 0 0 0-3.072-.255c.593-2.639.206-4.721-.185-5.935a1.8 1.8 0 0 0-.813-1.017 1.8 1.8 0 0 0-1.282-.202 10.7 10.7 0 0 0-3.783 1.677A11.8 11.8 0 0 0 16.07.36a1.77 1.77 0 0 0-2.142 0 11.84 11.84 0 0 0-3.497 4.425 10.7 10.7 0 0 0-3.785-1.677 1.8 1.8 0 0 0-1.281.203 1.8 1.8 0 0 0-.813 1.017c-.39 1.214-.778 3.296-.184 5.935a9.2 9.2 0 0 0-3.073.256 1.72 1.72 0 0 0-1.055.818 1.8 1.8 0 0 0-.178 1.374c.421 1.57 1.717 4.556 5.647 6.923S13.13 22 15 22s5.355 0 9.289-2.365 5.226-5.353 5.647-6.924a1.8 1.8 0 0 0-.176-1.374m-9.613-5.082a9.3 9.3 0 0 1 3.527-1.65.28.28 0 0 1 .322.192c.501 1.563.993 4.797-1.346 8.89a16.6 16.6 0 0 1-3.56 4.268c.977-1.71 1.759-4.022 1.759-7.06a15 15 0 0 0-.702-4.64M6.005 4.801a.28.28 0 0 1 .323-.195 9.3 9.3 0 0 1 3.527 1.65 15 15 0 0 0-.702 4.638c0 3.04.782 5.353 1.756 7.057a16.6 16.6 0 0 1-3.56-4.268C5.012 9.593 5.504 6.36 6.005 4.8m.488 13.516c-3.47-2.087-4.595-4.659-4.958-6.012a.27.27 0 0 1 .027-.206.22.22 0 0 1 .127-.102 7.9 7.9 0 0 1 3.142-.137 16 16 0 0 0 1.198 2.594 18 18 0 0 0 5.213 5.72 14.6 14.6 0 0 1-4.749-1.857m8.508 2.002c-1.104-.793-4.322-3.606-4.322-9.425 0-5.545 2.916-8.357 4.17-9.308a.25.25 0 0 1 .304 0c1.254.951 4.17 3.763 4.17 9.308 0 5.854-3.202 8.634-4.322 9.425m13.463-8.009c-.363 1.348-1.488 3.92-4.958 6.012a14.6 14.6 0 0 1-4.752 1.85 18 18 0 0 0 5.212-5.72 16 16 0 0 0 1.205-2.592 7.9 7.9 0 0 1 3.144.142c.054.016.1.053.127.102a.27.27 0 0 1 .024.206z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
 // Footer
 .footer {
   font-size: 16px;
@@ -289,7 +458,6 @@
 
   &__nav {
     padding: 55px 55px 50px;
-    align-items: center;
     column-gap: 64px;
     border-bottom: 1px solid $secondary-color;
   }
@@ -297,7 +465,6 @@
   &__menu {
     width: 100%;
     max-width: calc((100% - 242px) / 2);
-    justify-content: center;
     column-gap: 90px;
 
     &:first-of-type {
@@ -355,7 +522,6 @@
   &__items {
     padding-top: 56px;
     padding-bottom: 50px;
-    justify-content: space-between;
     column-gap: 24px;
   }
 
@@ -418,6 +584,7 @@
 
   &__form {
     position: relative;
+    margin-bottom: 0;
     max-width: 250px;
     width: 100%;
   }
@@ -497,8 +664,6 @@
 
   &__bottom-inner {
     padding-inline: 24px;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__bottom-menu {

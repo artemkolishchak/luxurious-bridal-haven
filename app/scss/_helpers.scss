@@ -1,3 +1,54 @@
+@use 'vars'as *;
+
 .d-flex {
   display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.m-b-50 {
+  margin-bottom: 50px;
+}
+
+.section-description {
+  max-width: 404px;
+  width: 100%;
+
+  p:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.border-secondary {
+  border: 8px solid $secondary-color;
 }
