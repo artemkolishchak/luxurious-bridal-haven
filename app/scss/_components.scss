@@ -81,3 +81,54 @@
     left: 200%;
   }
 }
+
+.contact-form {
+  margin-bottom: 0;
+  max-width: 540px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  input {
+    padding: 8px 16px 8px 0;
+    width: 100%;
+    display: block;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    border-bottom: 1px solid $text-color;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: $text-color;
+    }
+
+    &:hover {
+      border-color: $accent-color;
+    }
+
+    &:focus {
+      @include focus-visible($color:$accent-color);
+    }
+
+    @include focus-visible($color:$accent-color);
+
+    &:valid:not(:placeholder-shown) {
+      border-bottom-color: $input-success;
+    }
+
+    &:invalid:not(:placeholder-shown) {
+      border-color: $input-error;
+      background-color: $input-bg-error;
+    }
+  }
+}

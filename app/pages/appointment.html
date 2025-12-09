@@ -1,0 +1,47 @@
+<!--=include head.html -->
+<!--=include promo.html -->
+<!--=include header.html -->
+
+<main class="main">
+  <section class="appointment">
+    <div class="container">
+      <h1 class="appointment__heading section-heading">Book an Appointment</h1>
+      <div class="appointment__inner d-grid">
+        <div class="appointment__contact-information d-flex flex-col">
+          <h2 class="appointment__contact-information-heading">Contact Informathion</h2>
+          <div class="appointment__contact-information-description">
+            <p>Fill in your contact details</p>
+          </div>
+          <form class="appointment__contact-information-form contact-form" action="">
+            <fieldset>
+              <legend class="sr-only">Contact Information Form</legend>
+              <label class="sr-only" for="appointment_user_first_name">First Name</label>
+              <input type="text" name="appointment_user_first_name" id="appointment_user_first_name"
+                placeholder="First Name" required />
+              <label class="sr-only" for="appointment_user_last_name">Last Name</label>
+              <input type="text" name="appointment_user_last_name" id="appointment_user_last_name"
+                placeholder="Last Name" />
+              <label class="sr-only" for="appointment_user_email">Email</label>
+              <input type="email" name="appointment_user_email" id="appointment_user_email" autocomplete="email"
+                inputmode="email" placeholder="Email" required />
+              <label class="sr-only" for="appointment_user_phone">Phone</label>
+              <input type="tel" name="appointment_user_phone" id="appointment_user_phone" autocomplete="tel"
+                inputmode="tel" placeholder="Mobile" pattern="[0-9+()\-\s]{7,20}" />
+              <button class="btn btn--accent appointment__contact-information-form-btn" type="submit">Send</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="appointment__image border-secondary" style=" background-image:
+    image-set(url(/images/appointment-image.avif) type('image/avif'), url(/images/appointment-image.webp) type('image/webp'),
+    url(/images/appointment-image.jpg) type('image/jpeg'));"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!--=include footer.html -->
+</div>
+<!--=include script.html -->
+</body>
+
+</html>

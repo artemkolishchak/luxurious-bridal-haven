@@ -265,76 +265,28 @@
     @include object-image;
   }
 
-  &__box {
+  &__contact-form {
     padding-block: 40px;
     width: calc(50% - 20px);
     color: $primary-color;
   }
 
-  &__box-heading {
+  &__contact-form-heading {
     margin-bottom: 20px;
   }
 
-  &__box-description {
+  &__contact-form-description {
     margin-bottom: 30px;
     @extend %lora-400;
     font-size: 30px;
   }
 
-  &__box-form {
-    margin-bottom: 0;
-    max-width: 540px;
-    width: 100%;
-
-    input {
-      padding: 0;
-      padding-top: 8px;
-      padding-right: 16px;
-      padding-bottom: 8px;
-      width: 100%;
-      display: block;
-      border: none;
-      font-size: 20px;
-      background-color: transparent;
-      border-bottom: 1px solid $text-color;
-      transition: border-color 0.3s ease;
-
-      &+input {
-        margin-top: 8px;
-      }
-
-
-      &::placeholder {
-        color: $text-color;
-      }
-
-      &:hover {
-        border-color: $accent-color;
-      }
-
-      &:focus {
-        @include focus-visible($color:$accent-color);
-      }
-
-      @include focus-visible($color:$accent-color);
-
-      &:valid {
-        border-bottom-color: $input-success;
-      }
-
-      &:invalid:not(:placeholder-shown) {
-        border-color: $input-error;
-        background-color: $input-bg-error;
-      }
-    }
-  }
-
-  &__box-btn {
-    margin-top: 40px;
+  &__contact-form-btn {
+    margin-top: 36px;
     margin-bottom: 20px;
   }
 
-  &__box-consent {
+  &__contact-form-consent {
     font-size: 11px;
   }
 }
@@ -545,6 +497,73 @@
     font-size: 16px;
     font-weight: 300;
     color: $primary-color;
+  }
+}
+
+// Appointment Page
+.appointment {
+  padding-top: 20px;
+  padding-bottom: 130px;
+
+  &__heading {
+    margin-bottom: 75px;
+    text-align: center;
+  }
+
+  &__inner {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  &__contact-information-heading {
+    margin-bottom: 80px;
+    @extend %lora-400;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: $accent-color;
+  }
+
+  &__contact-information-description {
+    margin-bottom: 30px;
+
+    p {
+      font-weight: 700;
+    }
+  }
+
+  &__contact-information-form {
+    height: 100%;
+
+    fieldset {
+      height: 100%;
+    }
+  }
+
+  &__contact-information-form-btn {
+    margin-top: auto;
+  }
+
+  &__image {
+    position: relative;
+    max-width: 540px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 540 / 689;
+    @include bg-image;
+    @include object-image;
+
+    &::before {
+      content: '';
+      z-index: -1;
+      position: relative;
+      top: -11%;
+      left: -43%;
+      display: block;
+      width: 365px;
+      height: 365px;
+      @include bg-image('../images/appointment-decor-image.svg');
+      filter: opacity(40%);
+    }
   }
 }
 

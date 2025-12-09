@@ -15,7 +15,7 @@
       <div class="footer__logo logo">
         <a class="logo__link" href="#">
           <img class="logo__image" src="images/Luxurious-Bridal-Haven-Logo.svg" width="242" height="51"
-            alt="Luxurious Bridal Haven Logo">
+            alt="Luxurious Bridal Haven Logo" loading="lazy" decoding="async">
         </a>
       </div>
       <ul class="footer__menu d-flex">
@@ -81,10 +81,11 @@
       </div>
       <div class="footer__item">
         <p class="footer__item-heading">Sign-up for our newsletter</p>
-        <form action="" class="footer__form">
+        <form class="footer__form" action="">
           <label class="sr-only" for="user_email">Sign-up for our newsletter</label>
-          <input class="footer__form-input" type="email" name="user_email" id="user_email" autocomplete="email"
-            inputmode="email" placeholder="Enter your email" aria-label="Enter your email" required>
+          <input class="footer__form-input" type="email" name="newsletter_user_email" id="newsletter_user_email"
+            autocomplete="email" inputmode="email" placeholder="Enter your email" aria-label="Enter your email"
+            required>
           <button class="footer__form-btn" type="submit" aria-label="Submit">
             <svg width="15" height="11" role="img">
               <use href="images/sprite.svg#envelop-icon"></use>

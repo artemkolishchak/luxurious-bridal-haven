@@ -4,18 +4,22 @@
       <div class="join-us__image" style=" background-image:
     image-set(url(/images/join-us-image.avif) type('image/avif'), url(/images/join-us-image.webp) type('image/webp'),
     url(/images/join-us-image.jpg) type('image/jpeg'));"></div>
-      <div class="join-us__box d-flex flex-col">
-        <h2 class="join-us__box-heading section-heading">Join Us</h2>
-        <p class="join-us__box-description">Sign up and get 10% discount on your first purchase!</p>
-        <form class="join-us__box-form d-flex flex-col" action="">
-          <input type="text" name="user_first_name" id="user_first_name" placeholder="First Name"
-            aria-label="Enter Your First Name" required />
-          <input type="email" name="user_email" id="user_email" autocomplete="email" inputmode="email"
-            placeholder="Email" aria-label="Enter Your Email" required />
-          <button class="btn btn--accent join-us__box-btn" type="submit" aria-label="Submit and Get 10%">Get
-            10%</button>
-          <p class="join-us__box-consent">*By compleating this form you are signing up to receive our emails and can
-            unsubscribe at any time.</p>
+      <div class="join-us__contact-form d-flex flex-col">
+        <h2 class="join-us__contact-form-heading section-heading">Join Us</h2>
+        <p class="join-us__contact-form-description">Sign up and get 10% discount on your first purchase!</p>
+        <form class="contact-form" action="">
+          <fieldset>
+            <legend class="sr-only">Contact Information Form</legend>
+            <label class="sr-only" for="user_first_name">First Name</label>
+            <input type="text" name="user_first_name" id="user_first_name" placeholder="First Name" required />
+            <label class="sr-only" for="user_email">Enter Your Email</label>
+            <input type="email" name="user_email" id="user_email" autocomplete="email" inputmode="email"
+              placeholder="Email" required />
+            <button class="btn btn--accent join-us__contact-form-btn" type="submit">Get
+              10%</button>
+          </fieldset>
+          <p class="join-us__contact-form-consent">*By compleating this form you are signing up to receive our emails
+            and can unsubscribe at any time.</p>
         </form>
       </div>
     </div>
