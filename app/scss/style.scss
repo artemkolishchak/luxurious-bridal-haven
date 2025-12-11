@@ -589,6 +589,23 @@
   padding-top: 50px;
   padding-bottom: 100px;
 
+  &__inner {
+    position: relative;
+
+    &::before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: -9%;
+      right: -2%;
+      display: block;
+      width: 380px;
+      height: 380px;
+      @include bg-image('../images/collection-page-decor-image.svg', no-repeat, center);
+      filter: opacity(40%);
+    }
+  }
+
   &__heading {
     text-align: center;
   }
