@@ -3,13 +3,7 @@
 @use 'vars'as *;
 @use 'mixins'as *;
 
-.section-heading {
-  @extend %lora-400;
-  font-size: 45px;
-  text-transform: uppercase;
-  color: $accent-color;
-}
-
+// Button
 .btn {
   display: inline-block;
   text-align: center;
@@ -82,6 +76,7 @@
   }
 }
 
+// Form
 .contact-form {
   margin-bottom: 0;
   max-width: 540px;
@@ -131,4 +126,112 @@
       background-color: $input-bg-error;
     }
   }
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 16px;
+
+
+  &__list {
+    display: flex;
+    column-gap: 5px;
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+
+    &+& {
+      padding-left: 10px;
+    }
+
+    &+&:before {
+      content: '/';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      transform: translateY(-50%);
+    }
+
+    &--current {
+      pointer-events: none;
+      cursor: default;
+
+      &:hover,
+      &:active {
+        color: inherit;
+        text-shadow: none;
+      }
+    }
+  }
+
+  &__link {
+    transition: color 0.3s ease;
+
+    &:hover {
+      @include active-text-shadow;
+    }
+
+    &:active {
+      color: rgba($text-color, 0.55);
+    }
+
+    @include focus-visible($color: $text-color, );
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2px;
+  font-size: 16px;
+  color: $primary-color;
+
+  &__item--active {
+    .pagination__link {
+      color: $white;
+      background-color: $text-color;
+      pointer-events: none;
+    }
+  }
+
+  &__item--disable {
+    display: none;
+  }
+
+  &__link,
+  &__item--ellipsis {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: rgba($text-color, 0.25);
+      box-shadow: 0 0 0 1px $text-color;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include focus-visible($color: $text-color, $offset: 0, $radius: 8px);
+  }
+
+  &__item-prev-icon {
+    transform: rotate(180deg);
+  }
+
 }

@@ -1,5 +1,25 @@
 @use 'vars'as *;
 
+.section-heading {
+  @extend %lora-400;
+  font-size: 45px;
+  text-transform: uppercase;
+  color: $accent-color;
+}
+
+.section-description {
+  max-width: 404px;
+  width: 100%;
+
+  p:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.border-secondary {
+  border: 8px solid $secondary-color;
+}
+
 .d-flex {
   display: flex;
 }
@@ -42,17 +62,4 @@
 
 .m-b-50 {
   margin-bottom: 50px;
-}
-
-.section-description {
-  max-width: 404px;
-  width: 100%;
-
-  p:not(:last-child) {
-    margin-bottom: 30px;
-  }
-}
-
-.border-secondary {
-  border: 8px solid $secondary-color;
 }
